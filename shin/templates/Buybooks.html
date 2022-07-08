@@ -1,0 +1,38 @@
+{% extends 'headtemplate.html' %}
+{% load static %}
+{% block content %}
+<div class="About">
+  <p>Checkout for Limited Tausug Translator Book.</p>
+</div>
+<div class="About3">
+<form action = "/buybooks/" method = "post">
+{%csrf_token%}
+    <box class="box">
+    <fieldset>
+    <label for="Personal Information" class="letter"><b>Personal Information</b></label><br><br>
+    <label for="Fullname"><b>Your Name (for shipping)</b></label><br><br>
+    <input type="text" name="First_Name" id="fn" autofocus><br>
+    <label for="First_Name">First Name</label><br>
+    <input type="text" name="Last_Name" id="ln"><br>
+    <label for="Last_Name">Last Name</label><br>
+    <input type="tel" name="phone" id="pn"><br>
+    <label for="phone">Phone number</label> <br><br>
+
+
+    <label for="Shippping"><b>Shipping Address</b></label><br><br>
+    <input type="text" name="Adress" id="sa"><br>
+    <label for="name">Street Address</label><br>
+    <input type="text" name="City" id="c"><br>
+    <label for="City">City</label><br>
+    <input type="text" name="Province" id="pv"><br>
+    <label for="Province">State/Province</label><br>
+    <input type="tel" name="postal" id="z"><br>
+    <label for="Postal">Postal/Zip Code</label><br><br>
+
+    <button type="Submit" name="PROCEED" value="" class="buttonito" id="submt1" >Submit</button><br><br>
+
+    
+    </fieldset>
+</div>
+</form>
+{% endblock %}

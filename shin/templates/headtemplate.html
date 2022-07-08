@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="Tausug Translator" />
+    <title>Buy Limited Translator book</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'JS/amount.js'%}"></script>
+
+</head>
+
+<body>
+<div class="About2">
+  <a href="{% url 'shin:homepage' %}" target="_self">HOME |</a>
+  <a href="{% url 'shin:buybooks' %}" target="_self"> BUYBOOKS |</a>
+  <a href="{% url 'shin:order' %}" target="_self"> TABLES |</a>
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+

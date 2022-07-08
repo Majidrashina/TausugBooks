@@ -1,0 +1,40 @@
+{% extends 'headtemplate.html' %}
+{% load static %}
+{% block content %}
+
+<form>  
+<table class="content-table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Province</th>
+      <th>Postal</th>
+
+
+    </tr>
+  </thead>
+  {%for item in report%}
+  <tbody>
+    <tr>
+      <td>{{item.Fname}}</td>
+      <td>{{item.Lname}}</td>
+      <td>{{item.Pnumb}}</td>
+      <td>{{item.Shipad}}</td>
+      <td>{{item.Citi}}</td>
+      <td>{{item.Prov}}</td>
+      <td>{{item.Postal}}</td>
+      <td>          
+        <a type='button' class = "btn primary" href="{% url 'shin:edit' item.pk%}" > Edit</a> <a class="btn btn-sm" type='button' href="{% url 'shin:cancel' item.pk %}" > Cancel</a>
+      </td>
+    </tr>
+  </tbody>
+    {%endfor%}
+  </tbody>
+</table>
+</form>
+
+{% endblock %}

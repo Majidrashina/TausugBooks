@@ -1,0 +1,21 @@
+{% extends 'headtemplate.html' %}
+{% load static %}
+{% block content %}
+<div class="About">
+    <p>Edit Personal Information</p>
+</div>
+<form method="POST" action="">
+    {% csrf_token%} 
+<div>
+    <div>{{form.Fname}}</div>
+    <div>{{form.Lname}}</div>
+    <div>{{form.Pnumb}}</div>
+    <div>{{form.Shipad}}</div>
+    <div>{{form.Citi}}</div>
+    <div>{{form.Prov}}</div>
+    <div>{{form.Postal}}</div>
+    <div>
+        <input type = "Submit" class="btn primary" ></input>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends 'headtemplate.html' %}
+{% load static %}
+{% block content %}
+<div>
+  <div id = "pur" >
+  <fieldset class = 'collapse'>
+    <label for="YourOrder"><b>Your Order</b></label><br><br>
+    <img src="{% static "images/book.png"%}" class="Pic" /> <br>
+    <input type="radio" id="book299" name="AMOUNT" value="299" onclick="books();"/>₱299<br>
+    <label for="quantity"> Book Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="20" disabled>
+    <label for="packaging"><b>Your Order Packaging</b></label>
+    <select name= "dropdown" id="packaging" disabled>
+    <option value= "brownbox"> Brown Box </option>
+    <option value= "whitebox"   >Plain White Box </option>
+    <option value= "coloredbox"> Random Colored Box </option>
+    <option value= "specialbox"> Special Box  </option><br><br>
+    
+    </select> <br> <br>
+
+    <label for="addon"> Add-on:</label> <br><br>
+    <label for="BookMARK"> BookMarks</label> <br>
+    <img src="{% static "images/bookmark3.png"%}" class="Picsmall">
+    <img src="{% static "images/bookmark1.png"%}" class="Picsmall">
+    <img src="{% static "images/bookmark5.png"%}" class="Picsmall"><br>
+    <input type="checkbox" id="bookmark3" name="bookmark" value="49"> ₱49 Personalized
+    <input type="checkbox" id="bookmark1" name="bookmark" value="29"> ₱29 Pink 
+    <input type="checkbox" id="bookmark5" name="bookmark" value="25"> ₱25 Plain<br>
+    <div id="wrapper">
+    <div id="field_div">
+    <input type="button" value="Add Bookmark Name" id="bt" onclick="add_field();"> <input type="text" id = "abm" placeholder="Type Bookmark Name.." hidden>
+    
+  </fieldset>
+  </div>
+
+  <fieldset>
+    <label for="Highlighter"> Highlighter</label> <br>
+    <img src="{% static "images/highlighter1.png"%}" class="Picsmall">
+    <img src="{% static "images/highlighter3.png"%}" class="Picsmall">
+    <img src="{% static "images/highlighter5.png"%}" class="Picsmall"><br>
+    <input type="checkbox" id="highlight1" name="highlighter" value="0"> ₱25 Yellow 
+    <input type="checkbox" id="highlight3" name="highlighter" value="25"> ₱25 Green 
+    <input type="checkbox" id="highlight5" name="highlighter" value="159"> ₱159 4 in 1<br><br>
+
+    <label for="Stickers"> Stickers</label> <br><br>
+    <img src="{% static "images/stickers1.png"%}" class="Picsmall">
+    <img src="{% static "images/stickers3.png"%}" class="Picsmall">
+    <img src="{% static "images/stickers4.png"%}" class="Picsmall"><br>
+    <input type="checkbox" id="stickers1" name="stickers" value="19"> ₱19 Random
+    <input type="checkbox"id="stickers3"  name="stickers" value="19"> ₱19 Days
+    <input type="checkbox" id="stickers4" name="stickers" value="19"> ₱19 Cats <br><br>
+    
+    <label for="payment"><b>Mode of Payment</b></label><br>
+    <input type="radio" name="cod" value="cod"/>Cash on Delivery
+    <input type="radio" name="cod" value="gcash"/>G-cash<br><br>
+    <button class = "buttonito" text='CHECKOUT' onclick = "checkout();">CHECKOUT</button><br><br>
+
+    
+
+  </fieldset>
+</div>
+
+<div></div>
+<html> 
+<div id ="toam" class = "collapse" disabled>
+<fieldset>
+  <form>  
+  <div>
+    <h2 id="qw">See the total here.</h2>
+ 
+    <div>
+      <div>
+        
+        <div ><p id='ta'></p></div>
+
+      </div>
+      <a id="proc" type="Submit" class = "buttonito" text='PROCEED'  href="{% url "shin:order" %}" hidden>PROCEED</a><br><br>
+
+    </div>
+      
+    
+  </div>
+  </form>
+</fieldset>
+</div>
+</html>
+<script type="text/javascript">
+
+  
+  function checkout(){
+ 
+    if (document.getElementById("highlight1").checked == true){
+      document.getElementById("highlight1").value = 25;
+
+
+    }
+    if (document.getElementById("highlight3").checked == false){
+      document.getElementById("highlight3").value = 0;
+
+
+    }
+    if (document.getElementById("highlight5").checked == false){
+      document.getElementById("highlight5").value = 0;
+  
+    }
+    if (document.getElementById("bookmark3").checked == false){
+      document.getElementById("bookmark3").value = 0;
+
+    }
+    if (document.getElementById("bookmark1").checked == false){
+      document.getElementById("bookmark1").value = 0;
+
+
+    }
+    if (document.getElementById("bookmark5").checked == false){
+      document.getElementById("bookmark5").value = 0;
+  
+    }
+    if (document.getElementById("stickers1").checked == false){
+      document.getElementById("stickers1").value = 0;
+
+    }
+    if (document.getElementById("stickers3").checked == false){
+      document.getElementById("stickers3").value = 0;
+
+
+    }
+    if (document.getElementById("stickers4").checked == false){
+      document.getElementById("stickers4").value = 0;
+  
+    }
+    b = document.getElementById("highlight1").value; 
+    b1 = document.getElementById("highlight3").value;
+    b2 = document.getElementById("highlight5").value;
+    b3 = document.getElementById("bookmark3").value; 
+    b4 = document.getElementById("bookmark1").value;
+    b5 = document.getElementById("bookmark5").value;
+    b6 = document.getElementById("stickers1").value; 
+    b7 = document.getElementById("stickers3").value;
+    b8 = document.getElementById("stickers4").value;
+    a = document.getElementById("quantity").value * 299;
+    var result = Number(a) + Number(b) + Number(b1) + Number(b2) + Number(b3) + Number(b4) + Number(b5) + Number(b6) +Number(b7) + Number(b8);
+   
+    document.getElementById("qw").innerHTML = "Total amount" + " " + result;
+    document.getElementById("proc").hidden = false;
+
+}
+  function add_field(){
+    document.getElementById("abm").hidden = false;
+    
+  } 
+
+function books(){
+  document.getElementById("quantity").disabled = false;
+  document.getElementById("packaging").disabled = false;
+  
+
+}
+
+</script>
+
+  {% endblock %}
